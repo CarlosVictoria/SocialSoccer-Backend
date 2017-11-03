@@ -25,13 +25,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "reservations")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Reservations.findAll", query = "SELECT r FROM Reservations r")})
+    @NamedQuery(name = "Reservations.findAll", query = "SELECT r FROM Reservations r")
+    , @NamedQuery(name = "Reservations.findByIdReservations", query = "SELECT r FROM Reservations r WHERE r.idReservations = :idReservations")
+    , @NamedQuery(name = "Reservations.findByDate", query = "SELECT r FROM Reservations r WHERE r.date = :date")
+    , @NamedQuery(name = "Reservations.findByInitialHour", query = "SELECT r FROM Reservations r WHERE r.initialHour = :initialHour")
+    , @NamedQuery(name = "Reservations.findByFinalHour", query = "SELECT r FROM Reservations r WHERE r.finalHour = :finalHour")})
 public class Reservations implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,19 +46,19 @@ public class Reservations implements Serializable {
     private Integer idReservations;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "reservation_date")
+    @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date reservationDate;
+    private Date date;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "initial_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date initialDate;
+    @Column(name = "initial_hour")
+    @Temporal(TemporalType.TIME)
+    private Date initialHour;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "final_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date finalDate;
+    @Column(name = "final_hour")
+    @Temporal(TemporalType.TIME)
+    private Date finalHour;
     @JoinColumn(name = "id_soccer_fields", referencedColumnName = "id_soccer_fields")
     @ManyToOne(optional = false)
     private SoccerFields idSoccerFields;
@@ -72,11 +76,11 @@ public class Reservations implements Serializable {
         this.idReservations = idReservations;
     }
 
-    public Reservations(Integer idReservations, Date reservationDate, Date initialDate, Date finalDate) {
+    public Reservations(Integer idReservations, Date date, Date initialHour, Date finalHour) {
         this.idReservations = idReservations;
-        this.reservationDate = reservationDate;
-        this.initialDate = initialDate;
-        this.finalDate = finalDate;
+        this.date = date;
+        this.initialHour = initialHour;
+        this.finalHour = finalHour;
     }
 
     public Integer getIdReservations() {
@@ -87,28 +91,28 @@ public class Reservations implements Serializable {
         this.idReservations = idReservations;
     }
 
-    public Date getReservationDate() {
-        return reservationDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setReservationDate(Date reservationDate) {
-        this.reservationDate = reservationDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Date getInitialDate() {
-        return initialDate;
+    public Date getInitialHour() {
+        return initialHour;
     }
 
-    public void setInitialDate(Date initialDate) {
-        this.initialDate = initialDate;
+    public void setInitialHour(Date initialHour) {
+        this.initialHour = initialHour;
     }
 
-    public Date getFinalDate() {
-        return finalDate;
+    public Date getFinalHour() {
+        return finalHour;
     }
 
-    public void setFinalDate(Date finalDate) {
-        this.finalDate = finalDate;
+    public void setFinalHour(Date finalHour) {
+        this.finalHour = finalHour;
     }
 
     public SoccerFields getIdSoccerFields() {

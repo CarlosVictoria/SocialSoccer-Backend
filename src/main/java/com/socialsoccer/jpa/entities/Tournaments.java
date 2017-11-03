@@ -6,6 +6,7 @@
 package com.socialsoccer.jpa.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -21,6 +22,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,13 +31,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "tournaments")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tournaments.findAll", query = "SELECT t FROM Tournaments t")})
+    @NamedQuery(name = "Tournaments.findAll", query = "SELECT t FROM Tournaments t")
+    , @NamedQuery(name = "Tournaments.findByIdTournaments", query = "SELECT t FROM Tournaments t WHERE t.idTournaments = :idTournaments")
+    , @NamedQuery(name = "Tournaments.findByName", query = "SELECT t FROM Tournaments t WHERE t.name = :name")
+    , @NamedQuery(name = "Tournaments.findByInitialDate", query = "SELECT t FROM Tournaments t WHERE t.initialDate = :initialDate")
+    , @NamedQuery(name = "Tournaments.findByFinalDate", query = "SELECT t FROM Tournaments t WHERE t.finalDate = :finalDate")})
 public class Tournaments implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,8 +55,18 @@ public class Tournaments implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "initial_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date initialDate;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "final_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date finalDate;
     @ManyToMany(mappedBy = "tournamentsList")
-    private List<Teams> teamsList;
+    private List<Establishments> establishmentsList;
     @ManyToMany(mappedBy = "tournamentsList")
     private List<Headquarters> headquartersList;
     @JoinColumn(name = "id_tournaments_types", referencedColumnName = "id_tournaments_types")
@@ -59,6 +76,8 @@ public class Tournaments implements Serializable {
     private List<Matches> matchesList;
     @OneToMany(mappedBy = "idTournaments")
     private List<Reservations> reservationsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTournaments")
+    private List<PlayersTeamsTournaments> playersTeamsTournamentsList;
 
     public Tournaments() {
     }
@@ -67,9 +86,11 @@ public class Tournaments implements Serializable {
         this.idTournaments = idTournaments;
     }
 
-    public Tournaments(Integer idTournaments, String name) {
+    public Tournaments(Integer idTournaments, String name, Date initialDate, Date finalDate) {
         this.idTournaments = idTournaments;
         this.name = name;
+        this.initialDate = initialDate;
+        this.finalDate = finalDate;
     }
 
     public Integer getIdTournaments() {
@@ -88,13 +109,29 @@ public class Tournaments implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Teams> getTeamsList() {
-        return teamsList;
+    public Date getInitialDate() {
+        return initialDate;
     }
 
-    public void setTeamsList(List<Teams> teamsList) {
-        this.teamsList = teamsList;
+    public void setInitialDate(Date initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public Date getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(Date finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    @XmlTransient
+    public List<Establishments> getEstablishmentsList() {
+        return establishmentsList;
+    }
+
+    public void setEstablishmentsList(List<Establishments> establishmentsList) {
+        this.establishmentsList = establishmentsList;
     }
 
     @XmlTransient
@@ -130,6 +167,15 @@ public class Tournaments implements Serializable {
 
     public void setReservationsList(List<Reservations> reservationsList) {
         this.reservationsList = reservationsList;
+    }
+
+    @XmlTransient
+    public List<PlayersTeamsTournaments> getPlayersTeamsTournamentsList() {
+        return playersTeamsTournamentsList;
+    }
+
+    public void setPlayersTeamsTournamentsList(List<PlayersTeamsTournaments> playersTeamsTournamentsList) {
+        this.playersTeamsTournamentsList = playersTeamsTournamentsList;
     }
 
     @Override

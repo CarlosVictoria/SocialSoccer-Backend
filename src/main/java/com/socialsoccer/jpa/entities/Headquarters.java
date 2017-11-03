@@ -29,13 +29,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "headquarters")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Headquarters.findAll", query = "SELECT h FROM Headquarters h")})
+    @NamedQuery(name = "Headquarters.findAll", query = "SELECT h FROM Headquarters h")
+    , @NamedQuery(name = "Headquarters.findByIdHeadquarters", query = "SELECT h FROM Headquarters h WHERE h.idHeadquarters = :idHeadquarters")
+    , @NamedQuery(name = "Headquarters.findByNumHeadquarters", query = "SELECT h FROM Headquarters h WHERE h.numHeadquarters = :numHeadquarters")
+    , @NamedQuery(name = "Headquarters.findByAddress", query = "SELECT h FROM Headquarters h WHERE h.address = :address")
+    , @NamedQuery(name = "Headquarters.findByTelephone", query = "SELECT h FROM Headquarters h WHERE h.telephone = :telephone")
+    , @NamedQuery(name = "Headquarters.findByNumSoccerFields", query = "SELECT h FROM Headquarters h WHERE h.numSoccerFields = :numSoccerFields")})
 public class Headquarters implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,13 +52,8 @@ public class Headquarters implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "nit")
-    private String nit;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "name")
-    private String name;
+    @Column(name = "num_headquarters")
+    private String numHeadquarters;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -68,21 +68,14 @@ public class Headquarters implements Serializable {
     @NotNull
     @Column(name = "num_soccer_fields")
     private int numSoccerFields;
-    @Column(name = "main_headquarter")
-    private Boolean mainHeadquarter;
     @JoinTable(name = "tournaments_has_headquarters", joinColumns = {
         @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")}, inverseJoinColumns = {
         @JoinColumn(name = "id_tournaments", referencedColumnName = "id_tournaments")})
     @ManyToMany
     private List<Tournaments> tournamentsList;
-    @OneToMany(mappedBy = "idMainHeadquarter")
-    private List<Headquarters> headquartersList;
-    @JoinColumn(name = "id_main_headquarter", referencedColumnName = "id_headquarters")
-    @ManyToOne
-    private Headquarters idMainHeadquarter;
-    @JoinColumn(name = "id_users", referencedColumnName = "id_users")
+    @JoinColumn(name = "id_establishments", referencedColumnName = "id_establishments")
     @ManyToOne(optional = false)
-    private Users idUsers;
+    private Establishments idEstablishments;
     @JoinColumn(name = "id_cities", referencedColumnName = "id_cities")
     @ManyToOne(optional = false)
     private Cities idCities;
@@ -96,10 +89,9 @@ public class Headquarters implements Serializable {
         this.idHeadquarters = idHeadquarters;
     }
 
-    public Headquarters(Integer idHeadquarters, String nit, String name, String address, String telephone, int numSoccerFields) {
+    public Headquarters(Integer idHeadquarters, String numHeadquarters, String address, String telephone, int numSoccerFields) {
         this.idHeadquarters = idHeadquarters;
-        this.nit = nit;
-        this.name = name;
+        this.numHeadquarters = numHeadquarters;
         this.address = address;
         this.telephone = telephone;
         this.numSoccerFields = numSoccerFields;
@@ -113,20 +105,12 @@ public class Headquarters implements Serializable {
         this.idHeadquarters = idHeadquarters;
     }
 
-    public String getNit() {
-        return nit;
+    public String getNumHeadquarters() {
+        return numHeadquarters;
     }
 
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setNumHeadquarters(String numHeadquarters) {
+        this.numHeadquarters = numHeadquarters;
     }
 
     public String getAddress() {
@@ -153,14 +137,6 @@ public class Headquarters implements Serializable {
         this.numSoccerFields = numSoccerFields;
     }
 
-    public Boolean getMainHeadquarter() {
-        return mainHeadquarter;
-    }
-
-    public void setMainHeadquarter(Boolean mainHeadquarter) {
-        this.mainHeadquarter = mainHeadquarter;
-    }
-
     @XmlTransient
     public List<Tournaments> getTournamentsList() {
         return tournamentsList;
@@ -170,29 +146,12 @@ public class Headquarters implements Serializable {
         this.tournamentsList = tournamentsList;
     }
 
-    @XmlTransient
-    public List<Headquarters> getHeadquartersList() {
-        return headquartersList;
+    public Establishments getIdEstablishments() {
+        return idEstablishments;
     }
 
-    public void setHeadquartersList(List<Headquarters> headquartersList) {
-        this.headquartersList = headquartersList;
-    }
-
-    public Headquarters getIdMainHeadquarter() {
-        return idMainHeadquarter;
-    }
-
-    public void setIdMainHeadquarter(Headquarters idMainHeadquarter) {
-        this.idMainHeadquarter = idMainHeadquarter;
-    }
-
-    public Users getIdUsers() {
-        return idUsers;
-    }
-
-    public void setIdUsers(Users idUsers) {
-        this.idUsers = idUsers;
+    public void setIdEstablishments(Establishments idEstablishments) {
+        this.idEstablishments = idEstablishments;
     }
 
     public Cities getIdCities() {

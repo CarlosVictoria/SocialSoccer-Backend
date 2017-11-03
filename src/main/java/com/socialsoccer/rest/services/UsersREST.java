@@ -69,12 +69,12 @@ public Response create (Users user){
                             .build();  
              }else {
                     return Response.status(Response.Status.BAD_REQUEST)
-                            .entity(gson.toJson("DOC"))
+                            .entity(gson.toJson("El numero de documento ya existe."))
                             .build();
                 }
         }else {
                 return Response.status(Response.Status.BAD_REQUEST)
-                        .entity(gson.toJson("EMAIL"))
+                        .entity(gson.toJson("El email ya existe."))
                         .build();
             }
     }catch (Exception e) {

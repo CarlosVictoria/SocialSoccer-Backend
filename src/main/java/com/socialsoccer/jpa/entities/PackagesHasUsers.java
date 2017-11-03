@@ -25,13 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "packages_has_users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PackagesHasUsers.findAll", query = "SELECT p FROM PackagesHasUsers p")})
+    @NamedQuery(name = "PackagesHasUsers.findAll", query = "SELECT p FROM PackagesHasUsers p")
+    , @NamedQuery(name = "PackagesHasUsers.findByIdPackagesHasUsers", query = "SELECT p FROM PackagesHasUsers p WHERE p.idPackagesHasUsers = :idPackagesHasUsers")
+    , @NamedQuery(name = "PackagesHasUsers.findByInitialDate", query = "SELECT p FROM PackagesHasUsers p WHERE p.initialDate = :initialDate")
+    , @NamedQuery(name = "PackagesHasUsers.findByFinalDate", query = "SELECT p FROM PackagesHasUsers p WHERE p.finalDate = :finalDate")})
 public class PackagesHasUsers implements Serializable {
 
     private static final long serialVersionUID = 1L;

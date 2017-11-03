@@ -14,9 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,13 +25,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "teams")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Teams.findAll", query = "SELECT t FROM Teams t")})
+    @NamedQuery(name = "Teams.findAll", query = "SELECT t FROM Teams t")
+    , @NamedQuery(name = "Teams.findByIdTeams", query = "SELECT t FROM Teams t WHERE t.idTeams = :idTeams")
+    , @NamedQuery(name = "Teams.findByName", query = "SELECT t FROM Teams t WHERE t.name = :name")})
 public class Teams implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,15 +47,12 @@ public class Teams implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @JoinTable(name = "players_teams_tournaments", joinColumns = {
-        @JoinColumn(name = "id_teams", referencedColumnName = "id_teams")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_tournaments", referencedColumnName = "id_tournaments")})
-    @ManyToMany
-    private List<Tournaments> tournamentsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTeam1")
     private List<Matches> matchesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTeam2")
     private List<Matches> matchesList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTeams")
+    private List<PlayersTeamsTournaments> playersTeamsTournamentsList;
 
     public Teams() {
     }
@@ -87,15 +83,6 @@ public class Teams implements Serializable {
     }
 
     @XmlTransient
-    public List<Tournaments> getTournamentsList() {
-        return tournamentsList;
-    }
-
-    public void setTournamentsList(List<Tournaments> tournamentsList) {
-        this.tournamentsList = tournamentsList;
-    }
-
-    @XmlTransient
     public List<Matches> getMatchesList() {
         return matchesList;
     }
@@ -111,6 +98,15 @@ public class Teams implements Serializable {
 
     public void setMatchesList1(List<Matches> matchesList1) {
         this.matchesList1 = matchesList1;
+    }
+
+    @XmlTransient
+    public List<PlayersTeamsTournaments> getPlayersTeamsTournamentsList() {
+        return playersTeamsTournamentsList;
+    }
+
+    public void setPlayersTeamsTournamentsList(List<PlayersTeamsTournaments> playersTeamsTournamentsList) {
+        this.playersTeamsTournamentsList = playersTeamsTournamentsList;
     }
 
     @Override

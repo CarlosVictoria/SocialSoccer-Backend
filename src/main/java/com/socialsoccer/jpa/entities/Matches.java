@@ -7,6 +7,7 @@ package com.socialsoccer.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,16 +26,22 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "matches")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Matches.findAll", query = "SELECT m FROM Matches m")})
+    @NamedQuery(name = "Matches.findAll", query = "SELECT m FROM Matches m")
+    , @NamedQuery(name = "Matches.findByIdMatches", query = "SELECT m FROM Matches m WHERE m.idMatches = :idMatches")
+    , @NamedQuery(name = "Matches.findByDate", query = "SELECT m FROM Matches m WHERE m.date = :date")
+    , @NamedQuery(name = "Matches.findByGoalsTeam1", query = "SELECT m FROM Matches m WHERE m.goalsTeam1 = :goalsTeam1")
+    , @NamedQuery(name = "Matches.findByGoalsTeam2", query = "SELECT m FROM Matches m WHERE m.goalsTeam2 = :goalsTeam2")
+    , @NamedQuery(name = "Matches.findByResults", query = "SELECT m FROM Matches m WHERE m.results = :results")})
 public class Matches implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,9 +55,6 @@ public class Matches implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @Size(max = 45)
-    @Column(name = "judge_name")
-    private String judgeName;
     @Basic(optional = false)
     @NotNull
     @Column(name = "goals_team1")
@@ -57,6 +63,16 @@ public class Matches implements Serializable {
     @NotNull
     @Column(name = "goals_team2")
     private int goalsTeam2;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "results")
+    private String results;
+    @JoinTable(name = "matches_has_judges", joinColumns = {
+        @JoinColumn(name = "id_matches", referencedColumnName = "id_matches")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_users", referencedColumnName = "id_users")})
+    @ManyToMany
+    private List<Users> usersList;
     @JoinColumn(name = "id_team1", referencedColumnName = "id_teams")
     @ManyToOne(optional = false)
     private Teams idTeam1;
@@ -74,11 +90,12 @@ public class Matches implements Serializable {
         this.idMatches = idMatches;
     }
 
-    public Matches(Integer idMatches, Date date, int goalsTeam1, int goalsTeam2) {
+    public Matches(Integer idMatches, Date date, int goalsTeam1, int goalsTeam2, String results) {
         this.idMatches = idMatches;
         this.date = date;
         this.goalsTeam1 = goalsTeam1;
         this.goalsTeam2 = goalsTeam2;
+        this.results = results;
     }
 
     public Integer getIdMatches() {
@@ -97,14 +114,6 @@ public class Matches implements Serializable {
         this.date = date;
     }
 
-    public String getJudgeName() {
-        return judgeName;
-    }
-
-    public void setJudgeName(String judgeName) {
-        this.judgeName = judgeName;
-    }
-
     public int getGoalsTeam1() {
         return goalsTeam1;
     }
@@ -119,6 +128,23 @@ public class Matches implements Serializable {
 
     public void setGoalsTeam2(int goalsTeam2) {
         this.goalsTeam2 = goalsTeam2;
+    }
+
+    public String getResults() {
+        return results;
+    }
+
+    public void setResults(String results) {
+        this.results = results;
+    }
+
+    @XmlTransient
+    public List<Users> getUsersList() {
+        return usersList;
+    }
+
+    public void setUsersList(List<Users> usersList) {
+        this.usersList = usersList;
     }
 
     public Teams getIdTeam1() {

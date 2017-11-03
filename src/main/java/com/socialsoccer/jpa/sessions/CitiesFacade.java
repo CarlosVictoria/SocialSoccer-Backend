@@ -47,7 +47,7 @@ public class CitiesFacade extends AbstractFacade<Cities> {
         Predicate restrictions = cb.conjunction();
         
         if (idDepartamento != null) {
-            restrictions = cb.and(restrictions, cb.equal(city.get(Cities_.idDepartments), new Departments(idDepartamento)));
+            restrictions = cb.and(restrictions, cb.equal(city.get(Cities_.idDepartment), new Departments(idDepartamento)));
         }
         
         if (query != null) {

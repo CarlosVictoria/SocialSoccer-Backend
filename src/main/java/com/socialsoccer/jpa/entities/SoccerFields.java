@@ -27,13 +27,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Johan
  */
 @Entity
 @Table(name = "soccer_fields")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")})
+    @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")
+    , @NamedQuery(name = "SoccerFields.findByIdSoccerFields", query = "SELECT s FROM SoccerFields s WHERE s.idSoccerFields = :idSoccerFields")
+    , @NamedQuery(name = "SoccerFields.findByName", query = "SELECT s FROM SoccerFields s WHERE s.name = :name")
+    , @NamedQuery(name = "SoccerFields.findByAvaliable", query = "SELECT s FROM SoccerFields s WHERE s.avaliable = :avaliable")})
 public class SoccerFields implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,8 +52,8 @@ public class SoccerFields implements Serializable {
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "available")
-    private boolean available;
+    @Column(name = "avaliable")
+    private boolean avaliable;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSoccerFields")
     private List<Reservations> reservationsList;
     @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")
@@ -67,10 +70,10 @@ public class SoccerFields implements Serializable {
         this.idSoccerFields = idSoccerFields;
     }
 
-    public SoccerFields(Integer idSoccerFields, String name, boolean available) {
+    public SoccerFields(Integer idSoccerFields, String name, boolean avaliable) {
         this.idSoccerFields = idSoccerFields;
         this.name = name;
-        this.available = available;
+        this.avaliable = avaliable;
     }
 
     public Integer getIdSoccerFields() {
@@ -89,12 +92,12 @@ public class SoccerFields implements Serializable {
         this.name = name;
     }
 
-    public boolean getAvailable() {
-        return available;
+    public boolean getAvaliable() {
+        return avaliable;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setAvaliable(boolean avaliable) {
+        this.avaliable = avaliable;
     }
 
     @XmlTransient

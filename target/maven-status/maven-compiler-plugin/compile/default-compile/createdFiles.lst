@@ -1,4 +1,5 @@
 com\socialsoccer\rest\auth\SecurityFilter$Authorizer.class
+com\socialsoccer\jpa\entities\Establishments_.class
 com\socialsoccer\jpa\entities\SoccerFields.class
 com\socialsoccer\jpa\sessions\DocumentTypesFacade.class
 com\socialsoccer\jpa\entities\Cities_.class
@@ -9,6 +10,7 @@ com\socialsoccer\jpa\entities\TournamentsTypes.class
 com\socialsoccer\rest\auth\SecurityFilter.class
 com\socialsoccer\jpa\sessions\TeamsFacade.class
 com\socialsoccer\jpa\entities\Roles.class
+com\socialsoccer\jpa\entities\PlayersTeamsTournaments.class
 com\socialsoccer\jpa\entities\Tournaments_.class
 com\socialsoccer\jpa\sessions\TournamentsFacade.class
 com\socialsoccer\jpa\sessions\SoccerFieldTypesFacade.class
@@ -22,6 +24,7 @@ com\socialsoccer\jpa\entities\PackagesHasUsers_.class
 com\socialsoccer\rest\auth\SecurityFilter$User.class
 com\socialsoccer\jpa\entities\Matches_.class
 com\socialsoccer\jpa\entities\Headquarters_.class
+com\socialsoccer\rest\utils\SendEmail.class
 com\socialsoccer\jpa\entities\PackagesHasUsers.class
 com\socialsoccer\jpa\sessions\RolesFacade.class
 com\socialsoccer\jpa\entities\Departments.class
@@ -32,16 +35,21 @@ com\socialsoccer\jpa\entities\SoccerFieldTypes_.class
 com\socialsoccer\rest\auth\AuthREST.class
 com\socialsoccer\rest\services\ReservationsREST.class
 com\socialsoccer\jpa\entities\SoccerFields_.class
+com\socialsoccer\jpa\entities\UsersAu.class
+com\socialsoccer\jpa\sessions\EstablishmentsFacade.class
+com\socialsoccer\jpa\entities\PlayersTeamsTournaments_.class
 com\socialsoccer\jpa\entities\Users.class
 com\socialsoccer\jpa\entities\Tournaments.class
 com\socialsoccer\rest\auth\AuthUtils.class
 com\socialsoccer\jpa\entities\Packages_.class
 com\socialsoccer\jpa\sessions\ReservationsFacade.class
+com\socialsoccer\jpa\entities\Establishments.class
 com\socialsoccer\rest\auth\DigestUtil.class
 com\socialsoccer\jpa\sessions\MatchesFacade.class
 com\socialsoccer\jpa\sessions\HeadquartersFacade.class
 com\socialsoccer\jpa\entities\Cities.class
 com\socialsoccer\jpa\entities\Reservations.class
+com\socialsoccer\jpa\entities\UsersAu_.class
 com\socialsoccer\jpa\sessions\TournamentsTypesFacade.class
 com\socialsoccer\jpa\entities\Departments_.class
 com\socialsoccer\jpa\entities\Roles_.class
