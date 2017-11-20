@@ -6,6 +6,7 @@
 package com.socialsoccer.rest.services;
 
 import javax.ws.rs.ApplicationPath;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
@@ -18,5 +19,6 @@ public class ApplicationConfig extends ResourceConfig{
     public ApplicationConfig() {
         packages("com.socialsoccer.rest.services;com.socialsoccer.rest.auth");
         register(RolesAllowedDynamicFeature.class);
+     register(MultiPartFeature.class);
     }
 }

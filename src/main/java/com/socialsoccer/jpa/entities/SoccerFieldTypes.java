@@ -24,13 +24,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Carlos Jose Victoria
  */
 @Entity
 @Table(name = "soccer_field_types")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SoccerFieldTypes.findAll", query = "SELECT s FROM SoccerFieldTypes s")})
+    @NamedQuery(name = "SoccerFieldTypes.findAll", query = "SELECT s FROM SoccerFieldTypes s")
+    , @NamedQuery(name = "SoccerFieldTypes.findByIdSoccerFieldTypes", query = "SELECT s FROM SoccerFieldTypes s WHERE s.idSoccerFieldTypes = :idSoccerFieldTypes")
+    , @NamedQuery(name = "SoccerFieldTypes.findByDescription", query = "SELECT s FROM SoccerFieldTypes s WHERE s.description = :description")})
 public class SoccerFieldTypes implements Serializable {
 
     private static final long serialVersionUID = 1L;

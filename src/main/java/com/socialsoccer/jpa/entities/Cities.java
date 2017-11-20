@@ -27,13 +27,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Carlos Jose Victoria
  */
 @Entity
 @Table(name = "cities")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cities.findAll", query = "SELECT c FROM Cities c")})
+    @NamedQuery(name = "Cities.findAll", query = "SELECT c FROM Cities c")
+    , @NamedQuery(name = "Cities.findByIdCities", query = "SELECT c FROM Cities c WHERE c.idCities = :idCities")
+    , @NamedQuery(name = "Cities.findByCityCode", query = "SELECT c FROM Cities c WHERE c.cityCode = :cityCode")
+    , @NamedQuery(name = "Cities.findByName", query = "SELECT c FROM Cities c WHERE c.name = :name")})
 public class Cities implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,9 +55,9 @@ public class Cities implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @JoinColumn(name = "id_departments", referencedColumnName = "id_departments")
+    @JoinColumn(name = "id_department", referencedColumnName = "id_departments")
     @ManyToOne(optional = false)
-    private Departments idDepartments;
+    private Departments idDepartment;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCities")
     private List<Users> usersList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCities")
@@ -97,12 +100,12 @@ public class Cities implements Serializable {
         this.name = name;
     }
 
-    public Departments getIdDepartments() {
-        return idDepartments;
+    public Departments getIdDepartment() {
+        return idDepartment;
     }
 
-    public void setIdDepartments(Departments idDepartments) {
-        this.idDepartments = idDepartments;
+    public void setIdDepartment(Departments idDepartment) {
+        this.idDepartment = idDepartment;
     }
 
     @XmlTransient

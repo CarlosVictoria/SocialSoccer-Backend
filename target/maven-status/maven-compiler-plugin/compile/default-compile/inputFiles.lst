@@ -1,46 +1,52 @@
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\PackagesHasUsers.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\DocumentTypesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\ApplicationConfig.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Headquarters.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\DepartmentsFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\ReservationsFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Matches.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Teams.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\RolesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\PackagesHasUsersFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\auth\AuthREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Cities.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\SoccerFieldsFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\auth\DigestUtil.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\auth\SecurityFilter.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\TournamentsFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Reservations.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\SoccerFields.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\EstablishmentsREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\SoccerFieldsREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\SoccerFieldTypesREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\TeamsFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\auth\AuthUtils.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\CitiesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\auth\Token.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\UsersREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\DocumentTypes.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\SoccerFieldTypes.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\UsersFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\TournamentsTypesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Users.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\DocumentTypesREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\HeadquartersREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\MatchesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\DepartmentsREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\ReservationsREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\HeadquartersFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Departments.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\AbstractFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\rest\services\CitiesREST.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Tournaments.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\TournamentsTypes.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\SoccerFieldTypesFacade.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Packages.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\entities\Roles.java
-C:\Users\ADMIN\Documents\NetBeansProjects\SocialSoccer\src\main\java\com\socialsoccer\jpa\sessions\PackagesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Headquarters.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/RolesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/ReservationsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/SoccerFieldsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Cities.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/UsersAu.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/EstablishmentsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/PackagesHasUsersFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/HeadquartersREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/auth/SecurityFilter.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/PackagesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Establishments.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/EstablishmentsREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/auth/AuthREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Users.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/TournamentsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/CitiesREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/DepartmentsREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/DepartmentsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/MatchesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/DocumentTypes.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Roles.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Packages.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/utils/SendEmail.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/auth/AuthUtils.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/PlayersTeamsTournaments.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/TeamsFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/ApplicationConfig.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Teams.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Departments.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Matches.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Tournaments.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/auth/Token.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/TournamentsTypes.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/PackagesHasUsers.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/AbstractFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/UsersREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/auth/DigestUtil.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/HeadquartersFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/SoccerFieldTypes.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/SoccerFieldTypesREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/ReservationsREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/UsersFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/CitiesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/DocumentTypesREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/DocumentTypesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/SoccerFieldTypesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/SoccerFieldsREST.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/Reservations.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/rest/services/UploadRESTFile.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/sessions/TournamentsTypesFacade.java
+/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Backend/src/main/java/com/socialsoccer/jpa/entities/SoccerFields.java

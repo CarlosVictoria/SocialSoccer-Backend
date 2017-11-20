@@ -8,16 +8,16 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-08-28T13:22:37")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-20T08:16:18")
 @StaticMetamodel(Reservations.class)
 public class Reservations_ { 
 
+    public static volatile SingularAttribute<Reservations, Date> date;
     public static volatile SingularAttribute<Reservations, SoccerFields> idSoccerFields;
-    public static volatile SingularAttribute<Reservations, Date> finalDate;
     public static volatile SingularAttribute<Reservations, Integer> idReservations;
+    public static volatile SingularAttribute<Reservations, Date> initialHour;
     public static volatile SingularAttribute<Reservations, Tournaments> idTournaments;
     public static volatile SingularAttribute<Reservations, Users> idUsers;
-    public static volatile SingularAttribute<Reservations, Date> reservationDate;
-    public static volatile SingularAttribute<Reservations, Date> initialDate;
+    public static volatile SingularAttribute<Reservations, Date> finalHour;
 
 }

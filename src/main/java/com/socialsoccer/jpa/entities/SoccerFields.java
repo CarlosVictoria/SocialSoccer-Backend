@@ -27,13 +27,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Carlos Jose Victoria
  */
 @Entity
 @Table(name = "soccer_fields")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")})
+    @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")
+    , @NamedQuery(name = "SoccerFields.findByIdSoccerFields", query = "SELECT s FROM SoccerFields s WHERE s.idSoccerFields = :idSoccerFields")
+    , @NamedQuery(name = "SoccerFields.findByName", query = "SELECT s FROM SoccerFields s WHERE s.name = :name")})
 public class SoccerFields implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,10 +49,6 @@ public class SoccerFields implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "available")
-    private boolean available;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSoccerFields")
     private List<Reservations> reservationsList;
     @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")
@@ -67,10 +65,9 @@ public class SoccerFields implements Serializable {
         this.idSoccerFields = idSoccerFields;
     }
 
-    public SoccerFields(Integer idSoccerFields, String name, boolean available) {
+    public SoccerFields(Integer idSoccerFields, String name) {
         this.idSoccerFields = idSoccerFields;
         this.name = name;
-        this.available = available;
     }
 
     public Integer getIdSoccerFields() {
@@ -87,14 +84,6 @@ public class SoccerFields implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
     }
 
     @XmlTransient

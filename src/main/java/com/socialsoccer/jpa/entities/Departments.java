@@ -25,13 +25,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Carlos Jose Victoria
  */
 @Entity
 @Table(name = "departments")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM Departments d")})
+    @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM Departments d")
+    , @NamedQuery(name = "Departments.findByIdDepartments", query = "SELECT d FROM Departments d WHERE d.idDepartments = :idDepartments")
+    , @NamedQuery(name = "Departments.findByDepartmentCode", query = "SELECT d FROM Departments d WHERE d.departmentCode = :departmentCode")
+    , @NamedQuery(name = "Departments.findByName", query = "SELECT d FROM Departments d WHERE d.name = :name")})
 public class Departments implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,10 +45,15 @@ public class Departments implements Serializable {
     private Integer idDepartments;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 2)
+    @Column(name = "department_code")
+    private String departmentCode;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartments")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartment")
     private List<Cities> citiesList;
 
     public Departments() {
@@ -55,8 +63,9 @@ public class Departments implements Serializable {
         this.idDepartments = idDepartments;
     }
 
-    public Departments(Integer idDepartments, String name) {
+    public Departments(Integer idDepartments, String departmentCode, String name) {
         this.idDepartments = idDepartments;
+        this.departmentCode = departmentCode;
         this.name = name;
     }
 
@@ -66,6 +75,14 @@ public class Departments implements Serializable {
 
     public void setIdDepartments(Integer idDepartments) {
         this.idDepartments = idDepartments;
+    }
+
+    public String getDepartmentCode() {
+        return departmentCode;
+    }
+
+    public void setDepartmentCode(String departmentCode) {
+        this.departmentCode = departmentCode;
     }
 
     public String getName() {

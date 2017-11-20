@@ -28,13 +28,21 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADMIN
+ * @author Carlos Jose Victoria
  */
 @Entity
 @Table(name = "users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")})
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
+    , @NamedQuery(name = "Users.findByIdUsers", query = "SELECT u FROM Users u WHERE u.idUsers = :idUsers")
+    , @NamedQuery(name = "Users.findByNumDocument", query = "SELECT u FROM Users u WHERE u.numDocument = :numDocument")
+    , @NamedQuery(name = "Users.findByNames", query = "SELECT u FROM Users u WHERE u.names = :names")
+    , @NamedQuery(name = "Users.findByLastNames", query = "SELECT u FROM Users u WHERE u.lastNames = :lastNames")
+    , @NamedQuery(name = "Users.findByGender", query = "SELECT u FROM Users u WHERE u.gender = :gender")
+    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
+    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
+    , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,10 +82,23 @@ public class Users implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "password")
     private String password;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "active")
     private boolean active;
+    
+    @Size(min = 1, max = 150)
+    @Column(name = "photoUser")
+    private String photo;
+    
+    @Size(min = 1, max = 150)
+    @Column(name = "image")
+    private String imagen;
+    
     @ManyToMany(mappedBy = "usersList")
     private List<Roles> rolesList;
+    @ManyToMany(mappedBy = "usersList")
+    private List<Matches> matchesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
     private List<PackagesHasUsers> packagesHasUsersList;
     @JoinColumn(name = "id_cities", referencedColumnName = "id_cities")
@@ -87,9 +108,11 @@ public class Users implements Serializable {
     @ManyToOne(optional = false)
     private DocumentTypes idDocumentTypes;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
-    private List<Headquarters> headquartersList;
+    private List<Establishments> establishmentsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
     private List<Reservations> reservationsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+    private List<PlayersTeamsTournaments> playersTeamsTournamentsList;
 
     public Users() {
     }
@@ -173,6 +196,24 @@ public class Users implements Serializable {
         this.active = active;
     }
 
+      public String getPhotoUser() {
+        return photo;
+    }
+
+    public void setPhotoUser(String photo) {
+        this.photo = photo;
+    }
+    
+          public String getImage() {
+        return imagen;
+    }
+
+    public void setImage(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
+    
     @XmlTransient
     public List<Roles> getRolesList() {
         return rolesList;
@@ -180,6 +221,15 @@ public class Users implements Serializable {
 
     public void setRolesList(List<Roles> rolesList) {
         this.rolesList = rolesList;
+    }
+
+    @XmlTransient
+    public List<Matches> getMatchesList() {
+        return matchesList;
+    }
+
+    public void setMatchesList(List<Matches> matchesList) {
+        this.matchesList = matchesList;
     }
 
     @XmlTransient
@@ -208,12 +258,12 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public List<Headquarters> getHeadquartersList() {
-        return headquartersList;
+    public List<Establishments> getEstablishmentsList() {
+        return establishmentsList;
     }
 
-    public void setHeadquartersList(List<Headquarters> headquartersList) {
-        this.headquartersList = headquartersList;
+    public void setEstablishmentsList(List<Establishments> establishmentsList) {
+        this.establishmentsList = establishmentsList;
     }
 
     @XmlTransient
@@ -223,6 +273,15 @@ public class Users implements Serializable {
 
     public void setReservationsList(List<Reservations> reservationsList) {
         this.reservationsList = reservationsList;
+    }
+
+    @XmlTransient
+    public List<PlayersTeamsTournaments> getPlayersTeamsTournamentsList() {
+        return playersTeamsTournamentsList;
+    }
+
+    public void setPlayersTeamsTournamentsList(List<PlayersTeamsTournaments> playersTeamsTournamentsList) {
+        this.playersTeamsTournamentsList = playersTeamsTournamentsList;
     }
 
     @Override
