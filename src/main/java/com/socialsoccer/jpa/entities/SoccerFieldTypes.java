@@ -19,12 +19,17 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
+<<<<<<< HEAD
  * @author Carlos Jose Victoria
+=======
+ * @author Johan
+>>>>>>> d5ac4ca9496f3825dca8766b02b3679e508873d4
  */
 @Entity
 @Table(name = "soccer_field_types")
@@ -43,8 +48,9 @@ public class SoccerFieldTypes implements Serializable {
     private Integer idSoccerFieldTypes;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "description")
-    private int description;
+    private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSoccerFieldsTypes")
     private List<SoccerFields> soccerFieldsList;
 
@@ -55,7 +61,7 @@ public class SoccerFieldTypes implements Serializable {
         this.idSoccerFieldTypes = idSoccerFieldTypes;
     }
 
-    public SoccerFieldTypes(Integer idSoccerFieldTypes, int description) {
+    public SoccerFieldTypes(Integer idSoccerFieldTypes, String description) {
         this.idSoccerFieldTypes = idSoccerFieldTypes;
         this.description = description;
     }
@@ -68,11 +74,11 @@ public class SoccerFieldTypes implements Serializable {
         this.idSoccerFieldTypes = idSoccerFieldTypes;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

@@ -6,12 +6,12 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-21T11:57:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-21T12:42:38")
 @StaticMetamodel(SoccerFieldTypes.class)
 public class SoccerFieldTypes_ { 
 
     public static volatile ListAttribute<SoccerFieldTypes, SoccerFields> soccerFieldsList;
     public static volatile SingularAttribute<SoccerFieldTypes, Integer> idSoccerFieldTypes;
-    public static volatile SingularAttribute<SoccerFieldTypes, Integer> description;
+    public static volatile SingularAttribute<SoccerFieldTypes, String> description;
 
 }

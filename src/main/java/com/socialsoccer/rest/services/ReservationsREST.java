@@ -36,21 +36,28 @@ public class ReservationsREST {
     }
     
     @POST
-    public Response create(Reservations reservations){
-        reservationsEJB.create(reservations);
+    public Response create(Reservations reservations) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
-        
-        try{
-           reservationsEJB.create(reservations); 
-           return Response.status(Response.Status.OK)
-                   .entity(gson.toJson("La reserva se registro correctamente"))
-                   .build();
-        } catch (Exception e){
+        try {
+            if (reservationsEJB.checarDisponibilidad(reservations.getIdSoccerFields().getIdSoccerFields(),
+                    reservations.getDate(), reservations.getInitialHour(),
+                    reservations.getFinalHour()) == true) {
+                reservationsEJB.create(reservations);
+                return Response.status(Response.Status.OK)
+                        .entity(gson.toJson("Creada exitosamente"))
+                        .build();
+            } else {
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity(gson.toJson("La cancha ya ha sido reservada a esa hora"))
+                        .build();
+            }
+
+        } catch (Exception e) {
             System.out.println("Err: " + e);
-             return Response.status(Response.Status.BAD_REQUEST)
-                   .entity(gson.toJson("Error al registrar la reserva"))
-                   .build();
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(gson.toJson("Error al registrar la reserva."))
+                    .build();
         }
     }
    

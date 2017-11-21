@@ -43,7 +43,7 @@ public class UsersFacade extends AbstractFacade<Users> {
         cq.where(cb.equal(usuario.get(Users_.email), email));
         TypedQuery<Users> q = getEntityManager().createQuery(cq);
         try {
-            return (Users) q.getSingleResult();
+            return q.getSingleResult();
         } catch (NonUniqueResultException ex) {
             throw ex;
         } catch (NoResultException ex) {
@@ -59,7 +59,7 @@ public class UsersFacade extends AbstractFacade<Users> {
         cq.where(cb.equal(usuario.get(Users_.numDocument), numDocument));
         TypedQuery<Users> q = getEntityManager().createQuery(cq);
         try {
-            return (Users) q.getSingleResult();
+            return q.getSingleResult();
         } catch (NonUniqueResultException ex) {
             throw ex;
         } catch (NoResultException ex) {

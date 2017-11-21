@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-21T11:57:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-11-21T12:42:38")
 @StaticMetamodel(SoccerFields.class)
 public class SoccerFields_ { 
 
@@ -16,6 +16,7 @@ public class SoccerFields_ {
     public static volatile ListAttribute<SoccerFields, Reservations> reservationsList;
     public static volatile SingularAttribute<SoccerFields, SoccerFieldTypes> idSoccerFieldsTypes;
     public static volatile SingularAttribute<SoccerFields, Headquarters> idHeadquarters;
+    public static volatile SingularAttribute<SoccerFields, Boolean> avaliable;
     public static volatile SingularAttribute<SoccerFields, String> name;
 
 }

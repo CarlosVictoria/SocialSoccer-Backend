@@ -49,6 +49,10 @@ public class SoccerFields implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "avaliable")
+    private boolean avaliable;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSoccerFields")
     private List<Reservations> reservationsList;
     @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")
@@ -65,9 +69,10 @@ public class SoccerFields implements Serializable {
         this.idSoccerFields = idSoccerFields;
     }
 
-    public SoccerFields(Integer idSoccerFields, String name) {
+    public SoccerFields(Integer idSoccerFields, String name, boolean avaliable) {
         this.idSoccerFields = idSoccerFields;
         this.name = name;
+        this.avaliable = avaliable;
     }
 
     public Integer getIdSoccerFields() {
@@ -84,6 +89,15 @@ public class SoccerFields implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public boolean getAvaliable() {
+        return avaliable;
+    }
+
+    public void setAvaliable(boolean avaliable) {
+        this.avaliable = avaliable;
     }
 
     @XmlTransient

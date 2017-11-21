@@ -6,9 +6,11 @@
 package com.socialsoccer.jpa.sessions;
 
 import com.socialsoccer.jpa.entities.Reservations;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,17 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
 
     public ReservationsFacade() {
         super(Reservations.class);
+    }
+
+    public Boolean checarDisponibilidad(Integer idCancha, Date fecha, Date horaInicial, Date horaFinal){
+       Query checarDisponibilidad = em.createNativeQuery("select checarDisponibilidad(?,?,?,?)");
+       checarDisponibilidad.setParameter(1,idCancha);
+       checarDisponibilidad.setParameter(2,fecha);
+       checarDisponibilidad.setParameter(3,horaInicial);
+       checarDisponibilidad.setParameter(4,horaFinal);
+
+        Boolean disponibilidad = (Boolean) checarDisponibilidad.getSingleResult();
+        return disponibilidad;
     }
     
 }
