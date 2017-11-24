@@ -43,7 +43,8 @@ public final class AuthUtils {
         claim.setIssuer(host);
         claim.setIssueTime(DateTime.now().toDate());
         claim.setExpirationTime(DateTime.now().plusDays(1).toDate());
-        claim.setCustomClaim("user", user.getNames() + " " + user.getLastNames());
+        claim.setCustomClaim("name", user.getNames());
+        claim.setCustomClaim("lastname", user.getLastNames());
         System.out.println("IMG "+user.getPhotoUser()); 
         claim.setCustomClaim("avatar", user.getPhotoUser());
         claim.setCustomClaim("roles", Arrays.toString(user.getRolesList().toArray()));
