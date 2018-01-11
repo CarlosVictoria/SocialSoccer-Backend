@@ -34,10 +34,9 @@ public class SendEmail {
          
          //Start Contenido Email
          StringBuilder sb = new StringBuilder ();
-         sb.append("Bienvenido");
-         sb.append("Plataforma SocialSoccer");
-         sb.append("EJEMPLO");
-         sb.append("<div>Esto es un div</div>");
+         sb.append("<div><strong>Bienvenido a Social Soccer</strong></div>");
+         sb.append("Gracias por elegirnos");
+         sb.append("<div>Ahora que estas registrado, podras hacer tus reservas de forma facil y efectiva<div>");
          sb.append("Su nombre es : ");
          sb.append(user.getNames());
          
