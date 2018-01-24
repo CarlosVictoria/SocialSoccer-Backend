@@ -66,16 +66,16 @@ public class UploadRESTFile {
         File upload = new File(UPLOAD_FOLDER_USUARIOS.concat(info.getFileName()));
 
         try {
-            if (upload.exists()) {
-                String message = "file: " + upload.getName() + " already exists";
-                return Response.status(Response.Status.CONFLICT).entity(message).build();
-            } else {
+            while (upload.exists()) {
+               int rand = (int) (Math.random()*1000000);
+               upload = new File(UPLOAD_FOLDER_USUARIOS.concat(String.valueOf(rand)).concat(info.getFileName()));
+            } 
                 Files.copy(in, upload.toPath());
                 Users user = usersEJB.find(idUser);
                 user.setPhotoUser(upload.getName());
                 usersEJB.edit(user);
                 return Response.status(Response.Status.OK).build();
-            }
+            
         } catch (IOException e) {
             return Response.status(Response.Status.CONFLICT).entity(e).build();
         }
