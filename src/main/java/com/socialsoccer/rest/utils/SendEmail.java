@@ -34,11 +34,14 @@ public class SendEmail {
          
          //Start Contenido Email
          StringBuilder sb = new StringBuilder ();
-         sb.append("<div><strong>Bienvenido a Social Soccer</strong></div>");
-         sb.append("Gracias por elegirnos");
-         sb.append("<div>Ahora que estas registrado, podras hacer tus reservas de forma facil y efectiva<div>");
-         sb.append("Su nombre es : ");
+         sb.append("<div><strong><h1 style='text-align:center; color: blue;'>Social Soccer</h1></strong></div>");
+         sb.append("<div><img data-imagetype='External' src='https://2.bp.blogspot.com/-nVEO32c4j9o/V8Da1d6MmhI/AAAAAAAAAWM/beB6Fi_VQKQwdXsI0-Nlnp5wxydJ-5u3gCLcB/s1600/bienvenido.png' style='text-align:center; padding-left: 19em;'></div>");
+         sb.append("<p style='text-align: center; font-size 20px; color black; padding-left: 24em;'>Ahora que estas registrado, podras hacer tus reservas de forma facil y efectiva<p>");
+         sb.append("<p style='display:inline-block; text-align: center; color: black; padding-left: 36em;'>Su nombre es : </p>");
          sb.append(user.getNames());
+         sb.append(" ");
+         sb.append(user.getLastNames());
+         sb.append("<p style='display:block' style='text-align:center; padding-left: 38em;'>Gracias por elegirnos</p>");
          
          email.setHtmlMsg(sb.toString());
          //End Contenido Email
