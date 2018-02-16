@@ -34,12 +34,15 @@ public class SendEmail {
          
          //Start Contenido Email
          StringBuilder sb = new StringBuilder ();
-         sb.append("Bienvenido");
-         sb.append("Plataforma SocialSoccer");
-         sb.append("EJEMPLO");
-         sb.append("<div>Esto es un div</div>");
-         sb.append("Su nombre es : ");
+         sb.append("<div><strong><h1 style='text-align:center; color: black;'>Social Soccer</h1></strong></div>");
+         sb.append("<div><img data-imagetype='External' class:'img-responsive' src='https://2.bp.blogspot.com/-nVEO32c4j9o/V8Da1d6MmhI/AAAAAAAAAWM/beB6Fi_VQKQwdXsI0-Nlnp5wxydJ-5u3gCLcB/s1600/bienvenido.png' style='text-align:center;'></div>");
+         sb.append("<p style='display:inline-block; text-align: center; color: black;'>Hola, </p>");
+         sb.append(" ");
          sb.append(user.getNames());
+         sb.append(" ");
+         sb.append(user.getLastNames());  
+         sb.append("<p style='text-align: center; font-size 20px; color black;'>Ahora que estas registrado, podras hacer tus reservas de forma facil y efectiva<p>");
+         sb.append("<p style='display:block' style='text-align:center;'>Gracias por elegirnos</p>");
          
          email.setHtmlMsg(sb.toString());
          //End Contenido Email
