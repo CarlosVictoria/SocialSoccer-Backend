@@ -6,11 +6,20 @@
 package com.socialsoccer.jpa.sessions;
 
 import com.socialsoccer.jpa.entities.Reservations;
+import com.socialsoccer.jpa.entities.Reservations_;
+import com.socialsoccer.jpa.entities.Users;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -40,6 +49,28 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
 
         Boolean disponibilidad = (Boolean) checarDisponibilidad.getSingleResult();
         return disponibilidad;
+    }
+    
+    public List<Reservations> findReservationByIdUser(Integer idUser) {
+
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Reservations> cq = cb.createQuery(Reservations.class);
+        Root<Reservations> city = cq.from(Reservations.class);
+        
+        Predicate restrictions = cb.conjunction();
+        
+        if (idUser != null) {
+            restrictions = cb.and(restrictions, cb.equal(city.get(Reservations_.idUsers), new Users(idUser)));
+        }
+        
+        cq.where(restrictions);
+        cq.orderBy(cb.asc(city.get(Reservations_.date)));
+        TypedQuery<Reservations> q = em.createQuery(cq);
+        try {
+            return q.setMaxResults(10).getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
     
 }

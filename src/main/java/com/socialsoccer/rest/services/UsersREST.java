@@ -87,8 +87,7 @@ public Response create (Users user){
 }
 
 @PUT
-@Path("{idUsers}")
-public Response edit(@PathParam("idUsers") Integer id, Users user){
+public Response edit( Users user){
     GsonBuilder gsonBuilder = new GsonBuilder();
     Gson gson = gsonBuilder.create();
     

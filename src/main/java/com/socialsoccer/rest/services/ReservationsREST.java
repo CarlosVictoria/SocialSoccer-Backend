@@ -15,7 +15,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -30,9 +32,22 @@ public class ReservationsREST {
     @EJB
     private ReservationsFacade reservationsEJB;
     
-    @GET
+    /*@GET
     public List<Reservations> findAll(){
         return reservationsEJB.findAll();
+    }*/
+    
+    @GET
+    @Path("{idReservations}")
+    public Reservations findById(
+            @PathParam("idReservations") Integer id_reservations){
+        return reservationsEJB.find(id_reservations);
+    }
+    
+    @GET
+    public List<Reservations> findByIdUser(
+            @QueryParam("idUser") Integer idUser){
+        return reservationsEJB.findReservationByIdUser(idUser);
     }
     
     @POST
