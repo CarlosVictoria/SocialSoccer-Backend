@@ -50,6 +50,13 @@ public class ReservationsREST {
         return reservationsEJB.findReservationByIdUser(idUser);
     }
     
+    /*@GET
+    @Path("{idReservations}")
+    public Reservations findById(
+            @PathParam("idReservations") Integer id){
+        return reservationsEJB.find(id);
+    }*/
+    
     @POST
     public Response create(Reservations reservations) {
         GsonBuilder gsonBuilder = new GsonBuilder();

@@ -51,6 +51,7 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
         return disponibilidad;
     }
     
+
     public List<Reservations> findReservationByIdUser(Integer idUser) {
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
