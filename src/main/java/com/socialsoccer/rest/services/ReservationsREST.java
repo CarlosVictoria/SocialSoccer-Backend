@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -68,6 +69,26 @@ public class ReservationsREST {
                     .build();
         }
     }
+    
+    @PUT
+
+public Response edit( Reservations reservation){
+    GsonBuilder gsonBuilder = new GsonBuilder();
+    Gson gson = gsonBuilder.create();
+    
+    try{           
+        reservationsEJB.edit(reservation);
+        return Response.status(Response.Status.CREATED)
+                    .entity(gson.toJson("La reserva se actualizo correctamente"))
+                    .build();
+        
+    }catch (Exception e) {
+            System.out.println("Err" + e);
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(gson.toJson("Error al actualizar la reserva"))
+                    .build();
+     }
+}
    
 }
    

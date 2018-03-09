@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -44,6 +45,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
     , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
 public class Users implements Serializable {
+
+    @Lob
+    @Column(name = "photoUser")
+    private String photoUser;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -87,13 +95,6 @@ public class Users implements Serializable {
     @Column(name = "active")
     private boolean active;
     
-    @Size(min = 1, max = 150)
-    @Column(name = "photoUser")
-    private String photo;
-    
-    @Size(min = 1, max = 150)
-    @Column(name = "image")
-    private String imagen;
     
     @ManyToMany(mappedBy = "usersList")
     private List<Roles> rolesList;
@@ -196,21 +197,6 @@ public class Users implements Serializable {
         this.active = active;
     }
 
-      public String getPhotoUser() {
-        return photo;
-    }
-
-    public void setPhotoUser(String photo) {
-        this.photo = photo;
-    }
-    
-          public String getImage() {
-        return imagen;
-    }
-
-    public void setImage(String imagen) {
-        this.imagen = imagen;
-    }
     
     
     
@@ -308,5 +294,22 @@ public class Users implements Serializable {
     public String toString() {
         return "com.socialsoccer.jpa.entities.Users[ idUsers=" + idUsers + " ]";
     }
+
+    public String getPhotoUser() {
+        return photoUser;
+    }
+
+    public void setPhotoUser(String photoUser) {
+        this.photoUser = photoUser;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     
 }

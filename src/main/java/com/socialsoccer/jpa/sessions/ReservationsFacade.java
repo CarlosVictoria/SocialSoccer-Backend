@@ -9,8 +9,6 @@ import com.socialsoccer.jpa.entities.Reservations;
 import com.socialsoccer.jpa.entities.Reservations_;
 import static com.socialsoccer.jpa.entities.Reservations_.idUsers;
 import com.socialsoccer.jpa.entities.Users;
-import com.socialsoccer.jpa.entities.Users_;
-import com.socialsoccer.rest.auth.SecurityFilter.User;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;

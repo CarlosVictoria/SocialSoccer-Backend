@@ -12,7 +12,6 @@ import com.socialsoccer.jpa.sessions.UsersFacade;
 import com.socialsoccer.rest.auth.DigestUtil;
 import com.socialsoccer.rest.utils.SendEmail;
 import java.util.List;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
