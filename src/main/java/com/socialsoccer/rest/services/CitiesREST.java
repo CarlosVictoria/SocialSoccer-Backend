@@ -29,10 +29,13 @@ public class CitiesREST {
     @EJB
     private CitiesFacade cityEJB;
     
+    /*lista de todas las ciudades*/
     @GET
     public List<Cities> findAll(){
         return cityEJB.findAll();
     }
+    
+    /*metodo para listar las ciudades por id*/
     @GET
     @Path("{idCities}")
     public Cities findBye(
@@ -40,6 +43,7 @@ public class CitiesREST {
         return cityEJB.find(name);
     }
     
+    /*metodo para listar ciudades por nombre*/
     @GET
     @Path("find")
     public List<Cities> findByNombre(

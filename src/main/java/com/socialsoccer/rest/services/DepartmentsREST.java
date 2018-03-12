@@ -29,16 +29,21 @@ public class DepartmentsREST {
     @EJB
     private DepartmentsFacade departmentEJB;
     
+    /*metodo para listar todos los departamentos*/
     @GET
     public List<Departments> findAll(){
         return departmentEJB.findAll();
     }
+    
+    /*metodo para listar departamento por id y nombre*/
     @GET
     @Path("{idDepartment}")
     public Departments findBye(
     @PathParam("name")String name){
         return departmentEJB.find(name);
     }
+    
+    /*metodo para crear un departamento*/
     @POST
     public void create(Departments department){
         departmentEJB.create(department);

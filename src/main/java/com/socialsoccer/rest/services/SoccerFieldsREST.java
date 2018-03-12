@@ -28,10 +28,13 @@ public class SoccerFieldsREST {
     @EJB
     private SoccerFieldsFacade soccerFieldEJB;
     
+    /*metodo para listar todas la canchas*/
     @GET
     public List<SoccerFields> findAll(){
         return soccerFieldEJB.findAll();
     }
+    
+    /*metodo para listar las canchas por el id*/
    @GET
     @Path("{idSoccerFields}")
     public SoccerFields findById(
@@ -39,6 +42,8 @@ public class SoccerFieldsREST {
         return soccerFieldEJB.find(id_soccer_fields);
     }
     
+    
+    /*metodo para crear una cancha*/
     @POST
     public void create(SoccerFields soccerField){
         soccerFieldEJB.create(soccerField);

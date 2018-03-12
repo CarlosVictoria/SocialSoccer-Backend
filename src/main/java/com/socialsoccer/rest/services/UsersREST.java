@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -34,20 +35,26 @@ import javax.ws.rs.core.Response;
 public class UsersREST {
     @EJB
     private UsersFacade userEJB;
-
+    
+    
+    /*metodo para listar todos los usuarios*/
     @GET
-    //@RolesAllowed({"ADMIN"})
+    @RolesAllowed({"ADMIN"})
     public List<Users> findAll() {
         return userEJB.findAll();
     }
     
+    
+    /*metodo para obtener el usuario por medio del id*/
     @GET
     @Path("{idUsers}")
     public Users findById(
-            @PathParam("idUsers") Integer id){
-        return userEJB.find(id);
+            @PathParam("idUsers") Integer idUsers){
+        return userEJB.find(idUsers);
     }
     
+    
+    /*metodo para crear un usuario*/
 @POST
 public Response create (Users user){
     GsonBuilder gsonBuilder = new GsonBuilder();
@@ -86,23 +93,24 @@ public Response create (Users user){
         }
 }
 
-@PUT
+/*metodo para actualizar los datos de un usuario*/
 
-public Response edit(@PathParam("id") Integer id, Users user){
-    GsonBuilder gsonBuilder = new GsonBuilder();
-    Gson gson = gsonBuilder.create();
-    
-    try{           
+    @PUT
+    @Path("{idUsers}")
+    public Response edit(@PathParam("idUsers") Integer idUsers, Users user){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+        try{
         userEJB.edit(user);
         return Response.status(Response.Status.CREATED)
-                    .entity(gson.toJson("El usuario se actualizo correctamente"))
-                    .build();
-        
-    }catch (Exception e) {
-            System.out.println("Err" + e);
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(gson.toJson("Error al actualizar el usuario"))
-                    .build();
-     }
-}
+               .entity(gson.toJson("El usuario se actualizo correctamente"))
+                .build();
+       }catch (Exception e){
+            System.out.println("err" + e);
+               return Response.status(Response.Status.BAD_REQUEST)
+                       .entity(gson.toJson("El usuario no se púdo actualizar"))
+                       .build();
+               }
+            }
+
 }

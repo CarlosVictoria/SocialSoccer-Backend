@@ -39,7 +39,9 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
     public ReservationsFacade() {
         super(Reservations.class);
     }
-
+    /*
+    llamado de la funcion de la base de datos checarDisponibilidad
+    */
     public Boolean checarDisponibilidad(Integer idCancha, Date fecha, Date horaInicial, Date horaFinal){
        Query checarDisponibilidad = em.createNativeQuery("select checarDisponibilidad(?,?,?,?)");
        checarDisponibilidad.setParameter(1,idCancha);
