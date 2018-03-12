@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Carlos Jose Victoria
+ * @author adsi1261718
  */
 @Entity
 @Table(name = "soccer_fields")
@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")
     , @NamedQuery(name = "SoccerFields.findByIdSoccerFields", query = "SELECT s FROM SoccerFields s WHERE s.idSoccerFields = :idSoccerFields")
-    , @NamedQuery(name = "SoccerFields.findByName", query = "SELECT s FROM SoccerFields s WHERE s.name = :name")})
+    , @NamedQuery(name = "SoccerFields.findByName", query = "SELECT s FROM SoccerFields s WHERE s.name = :name")
+    , @NamedQuery(name = "SoccerFields.findByAvaliable", query = "SELECT s FROM SoccerFields s WHERE s.avaliable = :avaliable")})
 public class SoccerFields implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,7 +91,6 @@ public class SoccerFields implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public boolean getAvaliable() {
         return avaliable;

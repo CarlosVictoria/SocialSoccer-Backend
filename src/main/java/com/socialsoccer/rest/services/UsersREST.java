@@ -57,7 +57,7 @@ public Response create (Users user){
         if(userEJB.findUserByEmail(user.getEmail())== null){
              if (userEJB.findUserByNumDocument(user.getNumDocument()) == null){
                 user.setPassword(DigestUtil.cifrarPassword(user.getPassword()));
-                user.setPhotoUser("default.jpg");
+                user.setPhotoUser("user.png");
                 userEJB.create(user);
                 
             SendEmail enviarEmail = new SendEmail();
@@ -86,8 +86,8 @@ public Response create (Users user){
 }
 
 @PUT
-@Path("{idUsers}")
-public Response edit(@PathParam("idUsers") Integer id, Users user){
+@Path("{idUser}")
+public Response edit(@PathParam("idUser") Integer id, Users user){
     GsonBuilder gsonBuilder = new GsonBuilder();
     Gson gson = gsonBuilder.create();
     

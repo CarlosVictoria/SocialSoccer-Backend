@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Carlos Jose Victoria
+ * @author adsi1261718
  */
 @Entity
 @Table(name = "tournaments")
@@ -67,8 +67,6 @@ public class Tournaments implements Serializable {
     private Date finalDate;
     @ManyToMany(mappedBy = "tournamentsList")
     private List<Establishments> establishmentsList;
-    @ManyToMany(mappedBy = "tournamentsList")
-    private List<Headquarters> headquartersList;
     @JoinColumn(name = "id_tournaments_types", referencedColumnName = "id_tournaments_types")
     @ManyToOne(optional = false)
     private TournamentsTypes idTournamentsTypes;
@@ -132,15 +130,6 @@ public class Tournaments implements Serializable {
 
     public void setEstablishmentsList(List<Establishments> establishmentsList) {
         this.establishmentsList = establishmentsList;
-    }
-
-    @XmlTransient
-    public List<Headquarters> getHeadquartersList() {
-        return headquartersList;
-    }
-
-    public void setHeadquartersList(List<Headquarters> headquartersList) {
-        this.headquartersList = headquartersList;
     }
 
     public TournamentsTypes getIdTournamentsTypes() {

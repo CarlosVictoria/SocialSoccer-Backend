@@ -7,7 +7,6 @@ package com.socialsoccer.jpa.sessions;
 
 import com.socialsoccer.jpa.entities.Reservations;
 import com.socialsoccer.jpa.entities.Reservations_;
-import static com.socialsoccer.jpa.entities.Reservations_.idUsers;
 import com.socialsoccer.jpa.entities.Users;
 import java.util.Date;
 import java.util.List;
@@ -52,28 +51,24 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
         return disponibilidad;
     }
     
-     public List<Reservations> findReservations(Integer idUser){
-        
+
+    public List<Reservations> findReservationByIdUser(Integer idUser) {
+
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Reservations> cq = cb.createQuery(Reservations.class);
-        Root<Reservations> reservations = cq.from(Reservations.class);
+        Root<Reservations> city = cq.from(Reservations.class);
         
-        Predicate data = cb.conjunction();
+        Predicate restrictions = cb.conjunction();
         
-        
-        
-        if(idUsers != null){
-            data = cb.and(data, cb.equal(reservations.get(Reservations_.idUsers), new Users(idUser)));
+        if (idUser != null) {
+            restrictions = cb.and(restrictions, cb.equal(city.get(Reservations_.idUsers), new Users(idUser)));
         }
         
-        
-        
-        cq.where(data);
-        cq.orderBy(cb.asc(reservations.get(Reservations_.idUsers)));
-        TypedQuery<Reservations> tq = em.createQuery(cq);
-        
+        cq.where(restrictions);
+        cq.orderBy(cb.asc(city.get(Reservations_.date)));
+        TypedQuery<Reservations> q = em.createQuery(cq);
         try {
-            return tq.getResultList();
+            return q.setMaxResults(10).getResultList();
         } catch (NoResultException ex) {
             return null;
         }

@@ -32,13 +32,13 @@ public class SoccerFieldsREST {
     public List<SoccerFields> findAll(){
         return soccerFieldEJB.findAll();
     }
-    @GET
+   @GET
     @Path("{idSoccerFields}")
-    public SoccerFields findBye(
-    @PathParam("name")String name){
-        return soccerFieldEJB.find(name);
+    public SoccerFields findById(
+            @PathParam("idSoccerFields") Integer id_soccer_fields){
+        return soccerFieldEJB.find(id_soccer_fields);
+    }
     
-}
     @POST
     public void create(SoccerFields soccerField){
         soccerFieldEJB.create(soccerField);
