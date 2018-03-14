@@ -31,11 +31,13 @@ public class EstablishmentsREST {
     @EJB
     private EstablishmentsFacade establishmentsEJB;
     
+    /*metodo para listar todos los establecimientos*/
     @GET
     public List<Establishments> findAll(){
         return establishmentsEJB.findAll();
     }
     
+    /*metodo para listar los establecimientos por el id*/
     @GET
     @Path("{idEstablishments}")
     public Establishments findById(
@@ -43,11 +45,13 @@ public class EstablishmentsREST {
         return establishmentsEJB.find(id_establishments);
     }
     /*@GET
-    public List<Establishments> findByIdUser(
+    public List<Establishments> findByEstablishmentsIdUser(
             @QueryParam("idUser") Integer idUser){
         return establishmentsEJB.findEstablishmentByIdUser(idUser);
     }*/
     
+    
+    /*metodo para crear un establecimiento*/
     @POST
     public Response create(Establishments establishments){
         establishmentsEJB.create(establishments);

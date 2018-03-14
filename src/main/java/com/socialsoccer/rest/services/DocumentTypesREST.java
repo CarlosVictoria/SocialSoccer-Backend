@@ -49,6 +49,7 @@ public class DocumentTypesREST {
         return documentTypeEJB.find(id);
     }
     
+    /*metodo para crear un tipo de documento*/
     @POST
     public void create(DocumentTypes documentType){
         documentTypeEJB.create(documentType);

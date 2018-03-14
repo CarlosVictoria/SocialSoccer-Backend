@@ -32,6 +32,7 @@ public class SoccerFieldTypesREST {
      * Obtiene los tipos documentos de la BD
      * @return Lista de tipoDocumento
      */
+    
     @GET
     public List<SoccerFieldTypes> findAll(){
         return soccerFieldTypeEJB.findAll();
@@ -49,6 +50,8 @@ public class SoccerFieldTypesREST {
         return soccerFieldTypeEJB.find(id);
     }
     
+    
+    /*metodo para crear un tipo de cancha*/
     @POST
     public void create(SoccerFieldTypes soccerFieldType){
         soccerFieldTypeEJB.create(soccerFieldType);

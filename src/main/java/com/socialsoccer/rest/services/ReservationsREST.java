@@ -38,6 +38,7 @@ public class ReservationsREST {
         return reservationsEJB.findAll();
     }*/
     
+    /*metodo para listar las reservas por id*/
     @GET
     @Path("{idReservations}")
     public Reservations findById(
@@ -45,6 +46,7 @@ public class ReservationsREST {
         return reservationsEJB.find(id_reservations);
     }
     
+    /*metodo para obtener el id del usuario de cada reserva*/
     @GET
     public List<Reservations> findByIdUser(
             @QueryParam("idUser") Integer idUser){
@@ -58,6 +60,8 @@ public class ReservationsREST {
         return reservationsEJB.find(id);
     }*/
     
+    
+    /*metodo para crear un reserva de canchas*/
     @POST
     public Response create(Reservations reservations) {
         GsonBuilder gsonBuilder = new GsonBuilder();

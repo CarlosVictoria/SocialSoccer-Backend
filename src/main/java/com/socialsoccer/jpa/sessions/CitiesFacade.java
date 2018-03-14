@@ -37,7 +37,9 @@ public class CitiesFacade extends AbstractFacade<Cities> {
     public CitiesFacade() {
         super(Cities.class);
     }
-    
+    /*
+    lista de ciudades por idDepartamento
+    */
     public List<Cities> findCityByName(String query, Integer idDepartamento) {
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();

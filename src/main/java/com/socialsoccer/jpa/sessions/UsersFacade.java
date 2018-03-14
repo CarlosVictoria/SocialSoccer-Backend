@@ -7,6 +7,7 @@ package com.socialsoccer.jpa.sessions;
 
 import com.socialsoccer.jpa.entities.Users;
 import com.socialsoccer.jpa.entities.Users_;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -15,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
@@ -62,6 +64,31 @@ public class UsersFacade extends AbstractFacade<Users> {
             return q.getSingleResult();
         } catch (NonUniqueResultException ex) {
             throw ex;
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    public List<Users> findUsers(Integer idUsers, Boolean active) {
+
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Users> cq = cb.createQuery(Users.class);
+        Root<Users> user = cq.from(Users.class);
+        
+        Predicate data = cb.conjunction();
+        
+        if (idUsers != null) {
+            data = cb.and(data, cb.equal(user.get(Users_.idUsers), new Users(idUsers)));
+        }
+        if(active != null){
+            data = cb.and(data, cb.equal(user.get(Users_.active), active));
+        }
+        
+        cq.where(data);
+        cq.orderBy(cb.asc(user.get(Users_.names)));
+        TypedQuery<Users> q = em.createQuery(cq);
+        try {
+            return q.setMaxResults(10).getResultList();
         } catch (NoResultException ex) {
             return null;
         }
