@@ -5,10 +5,26 @@
  */
 package com.socialsoccer.rest.services;
 
-/**
- *
- * @author ADMIN
- */
+import com.socialsoccer.jpa.entities.Headquarters;
+import com.socialsoccer.jpa.sessions.HeadquartersFacade;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path ("headquarters")
+@Consumes (MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class HeadquartersREST {
+    @EJB
+    private HeadquartersFacade HeadquartersEJB;
     
+    /*metodo para listar todos los sedes*/
+    @GET
+    public List<Headquarters> findAll(){
+        return HeadquartersEJB.findAll();
+    }
 }
