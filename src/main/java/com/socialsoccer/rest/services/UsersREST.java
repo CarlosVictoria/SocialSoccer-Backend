@@ -65,7 +65,7 @@ public Response create (Users user){
         if(userEJB.findUserByEmail(user.getEmail())== null){
              if (userEJB.findUserByNumDocument(user.getNumDocument()) == null){
                 user.setPassword(DigestUtil.cifrarPassword(user.getPassword()));
-                user.setPhotoUser("default.jpg");
+                user.setPhotoUser("user.png");
                 userEJB.create(user);
                 
             SendEmail enviarEmail = new SendEmail();

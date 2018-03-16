@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.socialsoccer.jpa.entities.Reservations;
 import com.socialsoccer.jpa.sessions.ReservationsFacade;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,6 +34,7 @@ public class ReservationsREST {
     private ReservationsFacade reservationsEJB;
     
     /*@GET
+    @RolesAllowed({"ADMIN"})
     public List<Reservations> findAll(){
         return reservationsEJB.findAll();
     }*/
