@@ -95,12 +95,17 @@ public Response create (Users user){
 
 /*metodo para actualizar los datos de un usuario*/
 
+
+
+
+               
     @PUT
     @Path("{idUsers}")
     public Response edit(@PathParam("idUsers") Integer idUsers, Users user){
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         try{
+
         userEJB.edit(user);
         return Response.status(Response.Status.CREATED)
                .entity(gson.toJson("El usuario se actualizo correctamente"))

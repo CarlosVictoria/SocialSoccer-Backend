@@ -15,8 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Carlos Jose Victoria
+ * @author adsi1261718
  */
 @Entity
 @Table(name = "headquarters")
@@ -68,11 +66,6 @@ public class Headquarters implements Serializable {
     @NotNull
     @Column(name = "num_soccer_fields")
     private int numSoccerFields;
-    @JoinTable(name = "tournaments_has_headquarters", joinColumns = {
-        @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_tournaments", referencedColumnName = "id_tournaments")})
-    @ManyToMany
-    private List<Tournaments> tournamentsList;
     @JoinColumn(name = "id_establishments", referencedColumnName = "id_establishments")
     @ManyToOne(optional = false)
     private Establishments idEstablishments;
@@ -135,15 +128,6 @@ public class Headquarters implements Serializable {
 
     public void setNumSoccerFields(int numSoccerFields) {
         this.numSoccerFields = numSoccerFields;
-    }
-
-    @XmlTransient
-    public List<Tournaments> getTournamentsList() {
-        return tournamentsList;
-    }
-
-    public void setTournamentsList(List<Tournaments> tournamentsList) {
-        this.tournamentsList = tournamentsList;
     }
 
     public Establishments getIdEstablishments() {

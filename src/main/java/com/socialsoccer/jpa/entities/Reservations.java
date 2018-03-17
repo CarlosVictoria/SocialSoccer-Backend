@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Carlos Jose Victoria
+ * @author adsi1261718
  */
 @Entity
 @Table(name = "reservations")
@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Reservations.findByIdReservations", query = "SELECT r FROM Reservations r WHERE r.idReservations = :idReservations")
     , @NamedQuery(name = "Reservations.findByDate", query = "SELECT r FROM Reservations r WHERE r.date = :date")
     , @NamedQuery(name = "Reservations.findByInitialHour", query = "SELECT r FROM Reservations r WHERE r.initialHour = :initialHour")
-    , @NamedQuery(name = "Reservations.findByFinalHour", query = "SELECT r FROM Reservations r WHERE r.finalHour = :finalHour")})
+    , @NamedQuery(name = "Reservations.findByFinalHour", query = "SELECT r FROM Reservations r WHERE r.finalHour = :finalHour")
+    , @NamedQuery(name = "Reservations.findByEstado", query = "SELECT r FROM Reservations r WHERE r.estado = :estado")})
 public class Reservations implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,8 @@ public class Reservations implements Serializable {
     @Column(name = "final_hour")
     @Temporal(TemporalType.TIMESTAMP)
     private Date finalHour;
+    @Column(name = "estado")
+    private Boolean estado;
     @JoinColumn(name = "id_soccer_fields", referencedColumnName = "id_soccer_fields")
     @ManyToOne(optional = false)
     private SoccerFields idSoccerFields;
@@ -113,6 +116,14 @@ public class Reservations implements Serializable {
 
     public void setFinalHour(Date finalHour) {
         this.finalHour = finalHour;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     public SoccerFields getIdSoccerFields() {

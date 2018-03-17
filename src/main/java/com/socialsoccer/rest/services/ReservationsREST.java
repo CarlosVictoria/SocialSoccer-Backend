@@ -8,13 +8,16 @@ package com.socialsoccer.rest.services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.socialsoccer.jpa.entities.Reservations;
+import com.socialsoccer.jpa.entities.SoccerFields;
 import com.socialsoccer.jpa.sessions.ReservationsFacade;
+import com.socialsoccer.jpa.sessions.SoccerFieldsFacade;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -32,6 +35,9 @@ import javax.ws.rs.core.Response;
 public class ReservationsREST {
     @EJB
     private ReservationsFacade reservationsEJB;
+    
+    @EJB
+    private SoccerFieldsFacade soccerFieldEJB;
     
     /*@GET
     @RolesAllowed({"ADMIN"})
@@ -54,12 +60,7 @@ public class ReservationsREST {
         return reservationsEJB.findReservationByIdUser(idUser);
     }
     
-    /*@GET
-    @Path("{idReservations}")
-    public Reservations findById(
-            @PathParam("idReservations") Integer id){
-        return reservationsEJB.find(id);
-    }*/
+   
     
     
     /*metodo para crear un reserva de canchas*/
@@ -88,6 +89,26 @@ public class ReservationsREST {
                     .build();
         }
     }
+    
+    @PUT
+
+public Response edit( Reservations reservation){
+    GsonBuilder gsonBuilder = new GsonBuilder();
+    Gson gson = gsonBuilder.create();
+    
+    try{           
+        reservationsEJB.edit(reservation);
+        return Response.status(Response.Status.CREATED)
+                    .entity(gson.toJson("La reserva se actualizo correctamente"))
+                    .build();
+        
+    }catch (Exception e) {
+            System.out.println("Err" + e);
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(gson.toJson("Error al actualizar la reserva"))
+                    .build();
+     }
+}
    
 }
    

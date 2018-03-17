@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Carlos Jose Victoria
+ * @author adsi1261718
  */
 @Entity
 @Table(name = "users")
@@ -86,15 +87,12 @@ public class Users implements Serializable {
     @NotNull
     @Column(name = "active")
     private boolean active;
-    
-    @Size(min = 1, max = 150)
+    @Lob
     @Column(name = "photoUser")
-    private String photo;
-    
-    @Size(min = 1, max = 150)
+    private String photoUser;
+    @Lob
     @Column(name = "image")
-    private String imagen;
-    
+    private String  image;
     @ManyToMany(mappedBy = "usersList")
     private List<Roles> rolesList;
     @ManyToMany(mappedBy = "usersList")
@@ -196,24 +194,22 @@ public class Users implements Serializable {
         this.active = active;
     }
 
-      public String getPhotoUser() {
-        return photo;
+    public String  getPhotoUser() {
+        return photoUser;
     }
 
-    public void setPhotoUser(String photo) {
-        this.photo = photo;
-    }
-    
-          public String getImage() {
-        return imagen;
+    public void setPhotoUser(String  photoUser) {
+        this.photoUser = photoUser;
     }
 
-    public void setImage(String imagen) {
-        this.imagen = imagen;
+    public String  getImage() {
+        return image;
     }
-    
-    
-    
+
+    public void setImage(String  image) {
+        this.image = image;
+    }
+
     @XmlTransient
     public List<Roles> getRolesList() {
         return rolesList;

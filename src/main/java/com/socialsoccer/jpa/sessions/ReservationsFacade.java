@@ -7,6 +7,8 @@ package com.socialsoccer.jpa.sessions;
 
 import com.socialsoccer.jpa.entities.Reservations;
 import com.socialsoccer.jpa.entities.Reservations_;
+import com.socialsoccer.jpa.entities.SoccerFields;
+import com.socialsoccer.jpa.entities.SoccerFields_;
 import com.socialsoccer.jpa.entities.Users;
 import java.util.Date;
 import java.util.List;
@@ -69,6 +71,29 @@ public class ReservationsFacade extends AbstractFacade<Reservations> {
         cq.where(restrictions);
         cq.orderBy(cb.asc(city.get(Reservations_.date)));
         TypedQuery<Reservations> q = em.createQuery(cq);
+        try {
+            return q.setMaxResults(10).getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    public List<SoccerFields> findBySoccer(Integer idSoccerFields) {
+
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<SoccerFields> cq = cb.createQuery(SoccerFields.class);
+        Root<SoccerFields> soccerfields = cq.from(SoccerFields.class);
+        
+        Predicate restrictions = cb.conjunction();
+        
+     if (idSoccerFields != null) {
+            restrictions = cb.and(restrictions, cb.equal(soccerfields.get(SoccerFields_.idSoccerFields), new SoccerFields(idSoccerFields)));
+        }
+        
+        
+        cq.where(restrictions);
+        cq.orderBy(cb.asc(soccerfields.get(SoccerFields_.name)));
+        TypedQuery<SoccerFields> q = em.createQuery(cq);
         try {
             return q.setMaxResults(10).getResultList();
         } catch (NoResultException ex) {
