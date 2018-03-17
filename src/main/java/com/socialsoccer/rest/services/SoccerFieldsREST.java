@@ -6,6 +6,7 @@
 package com.socialsoccer.rest.services;
 
 import com.socialsoccer.jpa.entities.SoccerFields;
+import com.socialsoccer.jpa.sessions.EstablishmentsFacade;
 import com.socialsoccer.jpa.sessions.SoccerFieldsFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -29,11 +30,22 @@ public class SoccerFieldsREST {
     @EJB
     private SoccerFieldsFacade soccerFieldEJB;
     
+     @EJB
+    private EstablishmentsFacade establishmentsEJB;
+    
     /*metodo para listar todas la canchas*/
     @GET
     public List<SoccerFields> findAll(@QueryParam("establecimiento") Integer establecimiento){
         return soccerFieldEJB.findByEstablecimiento(establecimiento);
     }
+    /*
+    metodo para busqueda del establecimiento
+    */
+    
+    /*@GET
+    public List<SoccerFields> findByHeardquarters(@QueryParam("idHeadquarters") Integer idHeadquarters){
+        return establishmentsEJB.findByHeardquarters(idHeadquarters);
+    }*/
     
     /*metodo para listar las canchas por el id*/
    @GET

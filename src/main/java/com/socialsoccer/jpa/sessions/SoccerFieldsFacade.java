@@ -65,4 +65,18 @@ public class SoccerFieldsFacade extends AbstractFacade<SoccerFields> {
         }
     }
     
+    /*public List<SoccerFields> findByHeardquarters(Integer idHeadquarters){
+
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<SoccerFields> cq = cb.createQuery(SoccerFields.class);
+        Root<SoccerFields> soccerfields = cq.from(SoccerFields.class);
+        cq.where(cb.equal(soccerfields.get(SoccerFields_.idHeadquarters)));
+        TypedQuery<SoccerFields> q = em.createQuery(cq);
+        try {
+            return q.setMaxResults(10).getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }*/
+    
 }
