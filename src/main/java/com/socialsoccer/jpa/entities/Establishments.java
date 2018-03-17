@@ -68,6 +68,7 @@ public class Establishments implements Serializable {
     public Establishments(Integer idEstablishments) {
         this.idEstablishments = idEstablishments;
     }
+    
 
     public Establishments(Integer idEstablishments, String name) {
         this.idEstablishments = idEstablishments;
