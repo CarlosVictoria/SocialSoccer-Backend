@@ -54,6 +54,7 @@ public class SoccerFieldsREST {
             @PathParam("idSoccerFields") Integer id_soccer_fields){
         return soccerFieldEJB.find(id_soccer_fields);
     }
+
     
     
     /*metodo para crear una cancha*/

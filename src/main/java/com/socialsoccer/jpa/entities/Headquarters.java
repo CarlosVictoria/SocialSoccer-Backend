@@ -6,9 +6,7 @@
 package com.socialsoccer.jpa.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,9 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Headquarters.findAll", query = "SELECT h FROM Headquarters h")
     , @NamedQuery(name = "Headquarters.findByIdHeadquarters", query = "SELECT h FROM Headquarters h WHERE h.idHeadquarters = :idHeadquarters")
     , @NamedQuery(name = "Headquarters.findByNumHeadquarters", query = "SELECT h FROM Headquarters h WHERE h.numHeadquarters = :numHeadquarters")
-    , @NamedQuery(name = "Headquarters.findByAddress", query = "SELECT h FROM Headquarters h WHERE h.address = :address")
-    , @NamedQuery(name = "Headquarters.findByTelephone", query = "SELECT h FROM Headquarters h WHERE h.telephone = :telephone")
-    , @NamedQuery(name = "Headquarters.findByNumSoccerFields", query = "SELECT h FROM Headquarters h WHERE h.numSoccerFields = :numSoccerFields")})
+    , @NamedQuery(name = "Headquarters.findByTelephone", query = "SELECT h FROM Headquarters h WHERE h.telephone = :telephone")})
 public class Headquarters implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,26 +48,15 @@ public class Headquarters implements Serializable {
     private String numHeadquarters;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "address")
-    private String address;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "telephone")
     private String telephone;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "num_soccer_fields")
-    private int numSoccerFields;
     @JoinColumn(name = "id_establishments", referencedColumnName = "id_establishments")
     @ManyToOne(optional = false)
     private Establishments idEstablishments;
     @JoinColumn(name = "id_cities", referencedColumnName = "id_cities")
     @ManyToOne(optional = false)
     private Cities idCities;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHeadquarters")
-    private List<SoccerFields> soccerFieldsList;
 
     public Headquarters() {
     }
@@ -82,12 +65,10 @@ public class Headquarters implements Serializable {
         this.idHeadquarters = idHeadquarters;
     }
 
-    public Headquarters(Integer idHeadquarters, String numHeadquarters, String address, String telephone, int numSoccerFields) {
+    public Headquarters(Integer idHeadquarters, String numHeadquarters, String telephone) {
         this.idHeadquarters = idHeadquarters;
         this.numHeadquarters = numHeadquarters;
-        this.address = address;
         this.telephone = telephone;
-        this.numSoccerFields = numSoccerFields;
     }
 
     public Integer getIdHeadquarters() {
@@ -106,28 +87,12 @@ public class Headquarters implements Serializable {
         this.numHeadquarters = numHeadquarters;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getTelephone() {
         return telephone;
     }
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    public int getNumSoccerFields() {
-        return numSoccerFields;
-    }
-
-    public void setNumSoccerFields(int numSoccerFields) {
-        this.numSoccerFields = numSoccerFields;
     }
 
     public Establishments getIdEstablishments() {
@@ -144,15 +109,6 @@ public class Headquarters implements Serializable {
 
     public void setIdCities(Cities idCities) {
         this.idCities = idCities;
-    }
-
-    @XmlTransient
-    public List<SoccerFields> getSoccerFieldsList() {
-        return soccerFieldsList;
-    }
-
-    public void setSoccerFieldsList(List<SoccerFields> soccerFieldsList) {
-        this.soccerFieldsList = soccerFieldsList;
     }
 
     @Override

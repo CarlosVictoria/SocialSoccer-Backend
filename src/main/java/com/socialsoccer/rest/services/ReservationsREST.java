@@ -8,8 +8,11 @@ package com.socialsoccer.rest.services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.socialsoccer.jpa.entities.Reservations;
+import com.socialsoccer.jpa.entities.SoccerFields;
 import com.socialsoccer.jpa.sessions.ReservationsFacade;
+import com.socialsoccer.jpa.sessions.SoccerFieldsFacade;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,7 +36,11 @@ public class ReservationsREST {
     @EJB
     private ReservationsFacade reservationsEJB;
     
+    @EJB
+    private SoccerFieldsFacade soccerFieldEJB;
+    
     /*@GET
+    @RolesAllowed({"ADMIN"})
     public List<Reservations> findAll(){
         return reservationsEJB.findAll();
     }*/
@@ -53,12 +60,7 @@ public class ReservationsREST {
         return reservationsEJB.findReservationByIdUser(idUser);
     }
     
-    /*@GET
-    @Path("{idReservations}")
-    public Reservations findById(
-            @PathParam("idReservations") Integer id){
-        return reservationsEJB.find(id);
-    }*/
+   
     
     
     /*metodo para crear un reserva de canchas*/

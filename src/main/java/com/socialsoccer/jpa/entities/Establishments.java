@@ -15,8 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -37,7 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Establishments.findAll", query = "SELECT e FROM Establishments e")
     , @NamedQuery(name = "Establishments.findByIdEstablishments", query = "SELECT e FROM Establishments e WHERE e.idEstablishments = :idEstablishments")
-    , @NamedQuery(name = "Establishments.findByName", query = "SELECT e FROM Establishments e WHERE e.name = :name")})
+    , @NamedQuery(name = "Establishments.findByName", query = "SELECT e FROM Establishments e WHERE e.name = :name")
+    , @NamedQuery(name = "Establishments.findByAddress", query = "SELECT e FROM Establishments e WHERE e.address = :address")
+    , @NamedQuery(name = "Establishments.findByNumSoccerFields", query = "SELECT e FROM Establishments e WHERE e.numSoccerFields = :numSoccerFields")})
 public class Establishments implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,11 +51,16 @@ public class Establishments implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
-    @JoinTable(name = "tournaments_has_establishments", joinColumns = {
-        @JoinColumn(name = "id_establishments", referencedColumnName = "id_establishments")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_tournaments", referencedColumnName = "id_tournaments")})
-    @ManyToMany
-    private List<Tournaments> tournamentsList;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "address")
+    private String address;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "num_soccer_fields")
+    private String numSoccerFields;
     @JoinColumn(name = "id_users", referencedColumnName = "id_users")
     @ManyToOne(optional = false)
     private Users idUsers;
@@ -69,9 +74,11 @@ public class Establishments implements Serializable {
         this.idEstablishments = idEstablishments;
     }
 
-    public Establishments(Integer idEstablishments, String name) {
+    public Establishments(Integer idEstablishments, String name, String address, String numSoccerFields) {
         this.idEstablishments = idEstablishments;
         this.name = name;
+        this.address = address;
+        this.numSoccerFields = numSoccerFields;
     }
 
     public Integer getIdEstablishments() {
@@ -90,13 +97,20 @@ public class Establishments implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Tournaments> getTournamentsList() {
-        return tournamentsList;
+    public String getAddress() {
+        return address;
     }
 
-    public void setTournamentsList(List<Tournaments> tournamentsList) {
-        this.tournamentsList = tournamentsList;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNumSoccerFields() {
+        return numSoccerFields;
+    }
+
+    public void setNumSoccerFields(String numSoccerFields) {
+        this.numSoccerFields = numSoccerFields;
     }
 
     public Users getIdUsers() {
