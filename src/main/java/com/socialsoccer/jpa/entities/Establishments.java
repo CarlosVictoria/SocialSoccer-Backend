@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -61,6 +63,11 @@ public class Establishments implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "num_soccer_fields")
     private String numSoccerFields;
+     @JoinTable(name = "tournaments_has_establishments", joinColumns = {
+        @JoinColumn(name = "id_establishments", referencedColumnName = "id_establishments")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_tournaments", referencedColumnName = "id_tournaments")})
+    @ManyToMany
+    private List<Tournaments> tournamentsList;
     @JoinColumn(name = "id_users", referencedColumnName = "id_users")
     @ManyToOne(optional = false)
     private Users idUsers;
@@ -73,6 +80,7 @@ public class Establishments implements Serializable {
     public Establishments(Integer idEstablishments) {
         this.idEstablishments = idEstablishments;
     }
+    
 
     public Establishments(Integer idEstablishments, String name, String address, String numSoccerFields) {
         this.idEstablishments = idEstablishments;

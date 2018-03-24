@@ -22,7 +22,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 @Produces(MediaType.APPLICATION_JSON)
 public class UploadRESTFile {
         //Se debe cambiar por la URL donde se quiera guardar la imagen
-    private static final String UPLOAD_FOLDER = "home/adsi1261718/Documentos/JULIAN/SocialSoccer-Fronted/client/assets/images/Photos/images/Photos";
+    private static final String UPLOAD_FOLDER = "/home/adsi1261718/Documentos/JULIAN/SocialSoccer-Fronted/client/assets/images/Photos/";
     private static final String UPLOAD_FOLDER_USUARIOS = "/home/adsi1261718/Documentos/JULIAN/Proyecto Startup/SocialSoccer-Fronted/client/assets/images/Photos/";
 
     @EJB
