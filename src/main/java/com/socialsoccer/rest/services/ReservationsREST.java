@@ -7,6 +7,7 @@ package com.socialsoccer.rest.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.socialsoccer.jpa.entities.Establishments;
 import com.socialsoccer.jpa.entities.Reservations;
 import com.socialsoccer.jpa.entities.SoccerFields;
 import com.socialsoccer.jpa.sessions.ReservationsFacade;
@@ -60,8 +61,12 @@ public class ReservationsREST {
         return reservationsEJB.findReservationByIdUser(idUser);
     }
     
+    @GET
+    @Path("test")
+    public List<Reservations> test(@QueryParam("idUsuario") Integer idUsuario){
+        return reservationsEJB.findReservationByUsuario(idUsuario);
+    }
    
-    
     
     /*metodo para crear un reserva de canchas*/
     @POST

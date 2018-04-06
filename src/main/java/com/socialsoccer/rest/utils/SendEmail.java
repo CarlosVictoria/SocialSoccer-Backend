@@ -8,7 +8,7 @@ import org.apache.commons.mail.HtmlEmail;
 public class SendEmail {
     
    private static final String HOSTNAME = "smtp.gmail.com";
-   private static final String EMAIL = "SocialSoccer@gmail.com";
+   private static final String EMAIL = "pruebas.software.rrv@gmail.com";
    private static final String PASSWORD = "prueba2016";
    private static final int PUERTO = 465;
    private static final boolean ISSSL = true;
