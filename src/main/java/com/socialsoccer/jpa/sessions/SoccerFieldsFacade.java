@@ -64,12 +64,16 @@ public class SoccerFieldsFacade extends AbstractFacade<SoccerFields> {
             return null;
         }
     }
-    
-    public List<SoccerFields> findById(Integer idSoccerFields) {
+       /*public List<SoccerFields> findByHeardquarters(Integer idHeadquarters){
+       public List<SoccerFields> findById(Integer idSoccerFields) {
+
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<SoccerFields> cq = cb.createQuery(SoccerFields.class);
         Root<SoccerFields> soccerfields = cq.from(SoccerFields.class);
+
+        cq.where(cb.equal(soccerfields.get(SoccerFields_.idHeadquarters)));
+
         
         Predicate restrictions = cb.conjunction();
         
@@ -80,12 +84,17 @@ public class SoccerFieldsFacade extends AbstractFacade<SoccerFields> {
         
         cq.where(restrictions);
         cq.orderBy(cb.asc(soccerfields.get(SoccerFields_.name)));
+
         TypedQuery<SoccerFields> q = em.createQuery(cq);
         try {
             return q.setMaxResults(10).getResultList();
         } catch (NoResultException ex) {
             return null;
         }
+
+    }*/
+
     }
+
     
-}
+

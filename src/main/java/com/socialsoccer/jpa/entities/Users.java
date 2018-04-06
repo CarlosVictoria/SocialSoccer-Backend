@@ -46,6 +46,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
 public class Users implements Serializable {
 
+    @Lob
+    @Column(name = "photoUser")
+    private String photoUser;
+    @Lob
+    @Column(name = "image")
+    private String image;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,12 +94,6 @@ public class Users implements Serializable {
     @NotNull
     @Column(name = "active")
     private boolean active;
-    @Lob
-    @Column(name = "photoUser")
-    private String photoUser;
-    @Lob
-    @Column(name = "image")
-    private String  image;
     @ManyToMany(mappedBy = "usersList")
     private List<Roles> rolesList;
     @ManyToMany(mappedBy = "usersList")
@@ -119,7 +120,7 @@ public class Users implements Serializable {
         this.idUsers = idUsers;
     }
 
-    public Users(Integer idUsers, String numDocument, String names, String lastNames, String gender, String email, String password, boolean active) {
+    public Users(Integer idUsers, String numDocument, String names, String lastNames, String gender, String email, String password, boolean active, String photoUser, String image) {
         this.idUsers = idUsers;
         this.numDocument = numDocument;
         this.names = names;
@@ -128,6 +129,8 @@ public class Users implements Serializable {
         this.email = email;
         this.password = password;
         this.active = active;
+        this.photoUser = photoUser;
+        this.image = image;
     }
 
     public Integer getIdUsers() {
@@ -194,21 +197,6 @@ public class Users implements Serializable {
         this.active = active;
     }
 
-    public String  getPhotoUser() {
-        return photoUser;
-    }
-
-    public void setPhotoUser(String  photoUser) {
-        this.photoUser = photoUser;
-    }
-
-    public String  getImage() {
-        return image;
-    }
-
-    public void setImage(String  image) {
-        this.image = image;
-    }
 
     @XmlTransient
     public List<Roles> getRolesList() {
@@ -303,6 +291,22 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "com.socialsoccer.jpa.entities.Users[ idUsers=" + idUsers + " ]";
+    }
+
+    public String getPhotoUser() {
+        return photoUser;
+    }
+
+    public void setPhotoUser(String photoUser) {
+        this.photoUser = photoUser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }
