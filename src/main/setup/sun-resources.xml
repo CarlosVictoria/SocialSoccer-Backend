@@ -10,5 +10,7 @@
     <property name="Password" value="angel"/>
     <property name="PortNumber" value="3306"/>
     <property name="DatabaseName" value="socialsoccer"/>
+    <!--property name="driverClass" value="com.mysql.jdbc.Driver"/-->
+        <!--property serverName="10.72.197.218"/-->
   </jdbc-connection-pool>
 </resources>

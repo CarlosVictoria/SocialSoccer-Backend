@@ -6,7 +6,9 @@
 package com.socialsoccer.jpa.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Headquarters.findByNumHeadquarters", query = "SELECT h FROM Headquarters h WHERE h.numHeadquarters = :numHeadquarters")
     , @NamedQuery(name = "Headquarters.findByTelephone", query = "SELECT h FROM Headquarters h WHERE h.telephone = :telephone")})
 public class Headquarters implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHeadquarters")
+    private List<SoccerFields> soccerFieldsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -134,6 +141,15 @@ public class Headquarters implements Serializable {
     @Override
     public String toString() {
         return "com.socialsoccer.jpa.entities.Headquarters[ idHeadquarters=" + idHeadquarters + " ]";
+    }
+
+    @XmlTransient
+    public List<SoccerFields> getSoccerFieldsList() {
+        return soccerFieldsList;
+    }
+
+    public void setSoccerFieldsList(List<SoccerFields> soccerFieldsList) {
+        this.soccerFieldsList = soccerFieldsList;
     }
     
 }

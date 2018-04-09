@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Reservations.findByDate", query = "SELECT r FROM Reservations r WHERE r.date = :date")
     , @NamedQuery(name = "Reservations.findByInitialHour", query = "SELECT r FROM Reservations r WHERE r.initialHour = :initialHour")
     , @NamedQuery(name = "Reservations.findByFinalHour", query = "SELECT r FROM Reservations r WHERE r.finalHour = :finalHour")
-    , @NamedQuery(name = "Reservations.findByEstado", query = "SELECT r FROM Reservations r WHERE r.estado = :estado")})
+    , @NamedQuery(name = "Reservations.findByEstado", query = "SELECT r FROM Reservations r WHERE r.estado = :estado")
+    , @NamedQuery(name = "Reservations.findByPrecio", query = "SELECT r FROM Reservations r WHERE r.precio = :precio")})
 public class Reservations implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,6 +63,10 @@ public class Reservations implements Serializable {
     private Date finalHour;
     @Column(name = "estado")
     private Boolean estado;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "precio")
+    private long precio;
     @JoinColumn(name = "id_soccer_fields", referencedColumnName = "id_soccer_fields")
     @ManyToOne(optional = false)
     private SoccerFields idSoccerFields;
@@ -79,11 +84,12 @@ public class Reservations implements Serializable {
         this.idReservations = idReservations;
     }
 
-    public Reservations(Integer idReservations, Date date, Date initialHour, Date finalHour) {
+    public Reservations(Integer idReservations, Date date, Date initialHour, Date finalHour, long precio) {
         this.idReservations = idReservations;
         this.date = date;
         this.initialHour = initialHour;
         this.finalHour = finalHour;
+        this.precio = precio;
     }
 
     public Integer getIdReservations() {
@@ -124,6 +130,14 @@ public class Reservations implements Serializable {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public long getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(long precio) {
+        this.precio = precio;
     }
 
     public SoccerFields getIdSoccerFields() {

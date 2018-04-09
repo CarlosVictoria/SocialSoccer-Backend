@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SoccerFields.findAll", query = "SELECT s FROM SoccerFields s")
     , @NamedQuery(name = "SoccerFields.findByIdSoccerFields", query = "SELECT s FROM SoccerFields s WHERE s.idSoccerFields = :idSoccerFields")
     , @NamedQuery(name = "SoccerFields.findByName", query = "SELECT s FROM SoccerFields s WHERE s.name = :name")
-    , @NamedQuery(name = "SoccerFields.findByAvaliable", query = "SELECT s FROM SoccerFields s WHERE s.avaliable = :avaliable")})
+    , @NamedQuery(name = "SoccerFields.findByAvaliable", query = "SELECT s FROM SoccerFields s WHERE s.avaliable = :avaliable")
+    , @NamedQuery(name = "SoccerFields.findByValor", query = "SELECT s FROM SoccerFields s WHERE s.valor = :valor")})
 public class SoccerFields implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +55,10 @@ public class SoccerFields implements Serializable {
     @NotNull
     @Column(name = "avaliable")
     private boolean avaliable;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "valor")
+    private long valor;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSoccerFields")
     private List<Reservations> reservationsList;
     @JoinColumn(name = "id_headquarters", referencedColumnName = "id_headquarters")
@@ -70,10 +75,11 @@ public class SoccerFields implements Serializable {
         this.idSoccerFields = idSoccerFields;
     }
 
-    public SoccerFields(Integer idSoccerFields, String name, boolean avaliable) {
+    public SoccerFields(Integer idSoccerFields, String name, boolean avaliable, long valor) {
         this.idSoccerFields = idSoccerFields;
         this.name = name;
         this.avaliable = avaliable;
+        this.valor = valor;
     }
 
     public Integer getIdSoccerFields() {
@@ -98,6 +104,14 @@ public class SoccerFields implements Serializable {
 
     public void setAvaliable(boolean avaliable) {
         this.avaliable = avaliable;
+    }
+
+    public long getValor() {
+        return valor;
+    }
+
+    public void setValor(long valor) {
+        this.valor = valor;
     }
 
     @XmlTransient
